@@ -2,7 +2,7 @@
 
 # Installation
 
-*System dependencies:* [python](https://www.python.org/downloads/), [uv](https://github.com/astral-sh/uv.git).
+*System dependencies:* [python](https://www.python.org/downloads/), [uv](https://github.com/astral-sh/uv.git), [tmux](https://github.com/tmux/tmux/wiki).
 
 *Clone repository:*
 
@@ -10,14 +10,14 @@
 git clone https://github.com/Phylosius/airflow_project.git
 ```
 
-*Install pip dependencies*
+*Install pip dependencies:*
 
 ```bash
 cd airflow_project
 uv sync
 ```
 
-*Create the admin user*
+*Create the admin user:*
 
 ```bash
 ./create-admin-user
