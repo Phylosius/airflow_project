@@ -23,6 +23,8 @@ uv sync
 ./init
 ```
 
+This creates an Admin user with name `admin` and with password `admin`.
+
 # Documentation
 
 *Run with the file `run`*
