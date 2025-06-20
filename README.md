@@ -17,10 +17,10 @@ cd airflow_project
 uv sync
 ```
 
-*Create the admin user:*
+*Run the initialization script:*
 
 ```bash
-./create-admin-user
+./init
 ```
 
 # Documentation
@@ -31,12 +31,14 @@ uv sync
 ./run
 ```
 
-This command create a tmux session for named `airflow` with windows with the commands: `airflow dag-processor`, `airflow sheduler` and `airflow api-server`.
+This command creates a tmux session named airflow with windows running the following commands: airflow dag-processor, airflow scheduler, and airflow api-server.
 
-The airflow api server is started on the default address ([localhost:8080](http://0.0.0.0:8080))
+The Airflow API server will start at the default address: [localhost:8080](http://0.0.0.0:8080)
 
 *Stop with the file `stop`*
 
 ```bash
 ./stop
 ```
+
+This command stop the tmux session.
