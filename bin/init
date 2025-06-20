@@ -19,8 +19,9 @@ if [ ! -f "$AIRFLOW_HOME/airflow.db" ]; then
 fi
 
 echo "[init] admin user creation "
-"$AIRFLOW_PROJECT_HOME"/bin/create-admin-user
 
-touch "$AIRFLOW_HOME"/init.lock
+"$AIRFLOW_PROJECT_HOME/bin/create-admin-user"
+
+touch "$AIRFLOW_HOME/init.lock"
 
 echo "[init] initialization finished"
