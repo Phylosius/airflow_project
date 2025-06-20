@@ -1,4 +1,4 @@
 - [ ] add comment to scripts
-- [ ] globalise scripts execution
 - [ ] optimise venv activation
+- [x] globalise scripts execution
 - [x] make init file for initialization

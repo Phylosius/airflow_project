@@ -1,0 +1,15 @@
+#!/bin/bash
+
+AIRFLOW_PROJECT_HOME=$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && cd ../ && pwd )
+
+source "$AIRFLOW_PROJECT_HOME/.venv/bin/activate"
+source "$AIRFLOW_PROJECT_HOME/.profile"
+
+airflow users create \
+    --username admin \
+    --role Admin \
+    --password admin \
+    \
+    --email "" \
+    --firstname "" \
+    --lastname ""

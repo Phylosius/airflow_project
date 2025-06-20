@@ -1,0 +1,30 @@
+#!/bin/bash
+
+AIRFLOW_PROJECT_HOME=$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && cd ../ && pwd )
+
+source "$AIRFLOW_PROJECT_HOME/.venv/bin/activate"
+source "$AIRFLOW_PROJECT_HOME/.profile"
+
+if [ -f "$AIRFLOW_HOME/init.lock" ]; then
+    echo "[init] init lock file exists, it means an initialization have already been made. Skipping."
+    exit 0
+fi
+
+if [ ! -f "$AIRFLOW_HOME/airflow.db" ]; then
+    echo "Initialization"
+
+    echo "[init] airflow db migration"
+    airflow db migrate
+
+    echo "[init] variables settings"
+    uv run ./src/scripts/set_config.py webserver rbac "$AIRFLOW__WEBSERVER__RBAC"
+    uv run ./src/scripts/set_config.py core auth_manager "$AIRFLOW__CORE__AUTH_MANAGER"
+
+fi
+
+echo "[init] admin user creation "
+"$AIRFLOW_PROJECT_HOME"/bin/create-admin-user
+
+touch "$AIRFLOW_HOME"/init.lock
+
+echo "[init] initialization finished"
