@@ -5,4 +5,8 @@ source .profile
 airflow users create \
     --username admin \
     --role Admin \
-    --password admin
+    --password admin \
+    \
+    --email "" \
+    --firstname "" \
+    --lastname ""
