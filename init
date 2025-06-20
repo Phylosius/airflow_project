@@ -1,0 +1,28 @@
+#!/bin/bash
+
+source .venv/bin/activate
+source .profile
+
+if [ -f "$AIRFLOW_HOME/init.lock" ]; then
+    echo "[init] init lock file exists, it means an initialization have already been made. Skipping."
+    exit 0
+fi
+
+if [ ! -f "$AIRFLOW_HOME/airflow.db" ]; then
+    echo "Initialization"
+
+    echo "[init] airflow db migration"
+    airflow db migrate
+
+    echo "[init] variables settings"
+    .venv/bin/python ./src/scripts/set_config.py webserver rbac "$AIRFLOW__WEBSERVER__RBAC"
+    .venv/bin/python ./src/scripts/set_config.py core auth_manager "$AIRFLOW__CORE__AUTH_MANAGER"
+
+fi
+
+echo "[init] admin user creation "
+./create-admin-user
+
+touch $AIRFLOW_HOME/init.lock
+
+echo "[init] initialization finished"
