@@ -44,3 +44,7 @@ The Airflow API server will start at the default address: [localhost:8080](http:
 ```
 
 This command stop the tmux session.
+
+# Bug report
+
+For issues, bug reports or features demands go [here](https://github.com/Phylosius/airflow_project/issues).
