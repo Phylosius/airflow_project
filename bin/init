@@ -16,10 +16,6 @@ if [ ! -f "$AIRFLOW_HOME/airflow.db" ]; then
     echo "[init] airflow db migration"
     airflow db migrate
 
-    echo "[init] variables settings"
-    uv run "$AIRFLOW_PROJECT_HOME"/src/scripts/set_config.py webserver rbac "$AIRFLOW__WEBSERVER__RBAC"
-    uv run "$AIRFLOW_PROJECT_HOME"/src/scripts/set_config.py core auth_manager "$AIRFLOW__CORE__AUTH_MANAGER"
-
 fi
 
 echo "[init] admin user creation "
