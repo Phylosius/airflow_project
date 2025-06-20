@@ -17,8 +17,8 @@ if [ ! -f "$AIRFLOW_HOME/airflow.db" ]; then
     airflow db migrate
 
     echo "[init] variables settings"
-    uv run ./src/scripts/set_config.py webserver rbac "$AIRFLOW__WEBSERVER__RBAC"
-    uv run ./src/scripts/set_config.py core auth_manager "$AIRFLOW__CORE__AUTH_MANAGER"
+    uv run "$AIRFLOW_PROJECT_HOME"/src/scripts/set_config.py webserver rbac "$AIRFLOW__WEBSERVER__RBAC"
+    uv run "$AIRFLOW_PROJECT_HOME"/src/scripts/set_config.py core auth_manager "$AIRFLOW__CORE__AUTH_MANAGER"
 
 fi
 
