@@ -8,3 +8,12 @@ wheels/
 
 # Virtual environments
 .venv
+
+# uv
+uv.lock
+
+# airflow
+airflow_home/
+
+# jebrains
+.idea/

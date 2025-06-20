@@ -1,0 +1,2 @@
+- [ ] add comment to scripts
+- [ ] make init file for initialization

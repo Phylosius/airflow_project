@@ -1,0 +1,23 @@
+#!/bin/bash
+
+source .profile
+
+REQUESTED_SESSION_NAME=$1
+
+if [ -n "$REQUESTED_SESSION_NAME" ]; then
+    SESSION_NAME=$REQUESTED_SESSION_NAME
+else
+    SESSION_NAME=$AIRFLOW_TMUX_SESSION_NAME
+fi
+
+
+if tmux has-session -t "$SESSION_NAME" 2>/dev/null; then
+
+    tmux kill-session -t "$SESSION_NAME"
+    
+    echo "Session '$SESSION_NAME' stopped."
+
+else
+    echo "No '$SESSION_NAME' session is running."
+fi
+

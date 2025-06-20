@@ -1,0 +1,32 @@
+#!/bin/bash
+
+source .venv/bin/activate
+source .profile
+
+if [ ! -f "$AIRFLOW_HOME/airflow.db" ]; then
+    echo "Initialization"
+
+    airflow db migrate
+
+    .venv/bin/python ./src/scripts/set_config.py webserver rbac "$AIRFLOW__WEBSERVER__RBAC"
+    .venv/bin/python ./src/scripts/set_config.py core auth_manager "$AIRFLOW__CORE__AUTH_MANAGER"
+
+fi
+
+SESSION_NAME=$AIRFLOW_TMUX_SESSION_NAME
+
+if tmux has-session -t "$SESSION_NAME" 2>/dev/null; then
+    echo "A tmux session with name $SESSION_NAME already exist. skipping session creation."
+    
+else
+    echo "Creating tmux session '$SESSION_NAME'."
+
+    tmux new-session -d -s airflow -n editor \; \
+        send-keys 'airflow scheduler' C-m \; \
+        new-window -n server \; \
+        send-keys 'airflow dag-processor' C-m \; \
+        new-window -n logs \; \
+        send-keys 'airflow api-server' C-m
+fi
+
+echo "Airflow session on tmux at: $SESSION_NAME"
