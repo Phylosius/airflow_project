@@ -2,6 +2,10 @@
 
 AIRFLOW_PROJECT_HOME=$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && cd ../ && pwd )
 
+if [ ! -d "$AIRFLOW_PROJECT_HOME/.venv" ]; then
+  uv sync
+fi
+
 source "$AIRFLOW_PROJECT_HOME/.venv/bin/activate"
 source "$AIRFLOW_PROJECT_HOME/.profile"
 

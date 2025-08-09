@@ -2,6 +2,8 @@
 
 AIRFLOW_PROJECT_HOME=$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && cd ../ && pwd )
 
+"$AIRFLOW_PROJECT_HOME/bin/init"
+
 source "$AIRFLOW_PROJECT_HOME/.venv/bin/activate"
 source "$AIRFLOW_PROJECT_HOME/.profile"
 
