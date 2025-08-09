@@ -1,3 +1,4 @@
+- [ ] add dags folder config
 - [ ] add comment to scripts
 - [ ] optimise venv activation
 - [x] globalise scripts execution
