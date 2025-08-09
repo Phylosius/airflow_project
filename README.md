@@ -1,5 +1,8 @@
 # An airflow project template.
 
+Configure and run [Apache Airflow](https://github.com/apache/airflow) on a [tmux session](https://github.com/tmux/tmux/wiki/Getting-Started).
+A web interface is available at [localhost:8080](http://0.0.0.0:8080).
+
 # Installation
 
 *System dependencies:* [python](https://www.python.org/downloads/), [uv](https://github.com/astral-sh/uv.git), [tmux](https://github.com/tmux/tmux/wiki).
@@ -8,17 +11,19 @@
 
 ```bash
 git clone https://github.com/Phylosius/airflow_project.git
+cd airflow_project
 ```
 
 *Install pip dependencies:*
 
+__This part is not necessary as the `init` script do it automatically.__
 ```bash
-cd airflow_project
 uv sync
 ```
 
 *Run the initialization script:*
 
+__This part is not necessary as the `start` script do it automatically.__
 ```bash
 ./bin/init
 ```
@@ -27,17 +32,17 @@ This creates an Admin user with name `admin` and with password `admin`.
 
 # Documentation
 
-*Run with the file `run`*
+*Run airflow*
 
 ```bash
 ./bin/start
 ```
 
-This command creates a tmux session named airflow with windows running the following commands: airflow dag-processor, airflow scheduler, and airflow api-server.
+This command creates a tmux session named airflow with windows running respectively the following commands: airflow dag-processor, airflow scheduler, and airflow api-server.
 
 The Airflow API server will start at the default address: [localhost:8080](http://0.0.0.0:8080)
 
-*Stop with the file `stop`*
+*Stop aiflow*
 
 ```bash
 ./bin/stop
