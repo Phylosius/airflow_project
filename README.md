@@ -1,6 +1,6 @@
 # An airflow project template.
 
-Configure and run [Apache Airflow](https://github.com/apache/airflow) on a [tmux session](https://github.com/tmux/tmux/wiki/Getting-Started).
+This project can configure and run [Apache Airflow](https://github.com/apache/airflow) on a [tmux session](https://github.com/tmux/tmux/wiki/Getting-Started).
 A web interface is available at [localhost:8080](http://0.0.0.0:8080).
 
 # Installation
